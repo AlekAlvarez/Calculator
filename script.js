@@ -139,6 +139,9 @@ function populate(){
         Operator=undefined;
         Operand2=undefined;
         answer=undefined;
+        if(Operand1==Infinity){
+            Operand1="Divide by 0 is invalid";
+        }
         populate();
     });
     clear.addEventListener("click",()=>{
