@@ -10,7 +10,7 @@ const nine=document.querySelector("#nine");const zero=document.querySelector("#z
 const plus=document.querySelector("#plus");const minus=document.querySelector("#minus");
 const mult=document.querySelector("#multiply"); const div=document.querySelector("#divide");
 const display=document.querySelector("#Display span"); const equals=document.querySelector("#equal");
-const clear=document.querySelector("#clear");
+const clear=document.querySelector("#clear");const del=document.querySelector("#backspace");
 function add(Addend1,Addend2){
     let sum=Addend1+Addend2;
     if(isNaN(sum))return NaN;
@@ -151,3 +151,26 @@ function populate(){
         Operator=undefined;
         populate();
     });
+    del.addEventListener("click",()=>{
+    if(Operator==undefined){
+        if(Operand1==0){Operand1=undefined;
+        populate();
+        return;
+        }
+        Operand1/=10;
+        Operand1=Math.floor(Operand1);
+    }
+    else if(Operand2==undefined){
+        Operator=undefined;
+    }
+    else{
+        if(Operand2==0){
+            Operand2=undefined;
+            populate();
+            return;
+        }
+        Operand2/=10;
+        Operand2=Math.floor(Operand2);
+    }
+    populate();
+});
