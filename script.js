@@ -10,6 +10,7 @@ const nine=document.querySelector("#nine");const zero=document.querySelector("#z
 const plus=document.querySelector("#plus");const minus=document.querySelector("#minus");
 const mult=document.querySelector("#multiply"); const div=document.querySelector("#divide");
 const display=document.querySelector("#Display span"); const equals=document.querySelector("#equal");
+const clear=document.querySelector("#clear");
 function add(Addend1,Addend2){
     let sum=Addend1+Addend2;
     if(isNaN(sum))return NaN;
@@ -131,9 +132,19 @@ function populate(){
     });
     equals.addEventListener("click",()=>{
         answer=operate();
+        answer*=1000;
+        answer=Math.round(answer);
+        answer/=1000;
         Operand1=answer;
         Operator=undefined;
         Operand2=undefined;
         answer=undefined;
+        populate();
+    });
+    clear.addEventListener("click",()=>{
+        answer=undefined;
+        Operand1=undefined;
+        Operand2=undefined;
+        Operator=undefined;
         populate();
     });
