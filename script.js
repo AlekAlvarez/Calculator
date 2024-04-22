@@ -134,5 +134,6 @@ function populate(){
         Operand1=answer;
         Operator=undefined;
         Operand2=undefined;
+        answer=undefined;
         populate();
     });
